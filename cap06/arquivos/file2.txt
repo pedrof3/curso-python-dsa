@@ -1,0 +1,2 @@
+Esse texto foi adicionado nesse arquivo via Python.
+Já esse conteúdo, foi adicionado ao arquivo de texto usando o parâmetro 'a'(append) da função openEsse conteúdo foi adicionado ao arquivo de texto usando o parâmetro 'a'(append) da função open
