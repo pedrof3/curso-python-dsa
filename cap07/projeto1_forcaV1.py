@@ -1,12 +1,21 @@
 from random import sample
+from os import system, name
 import re
 
-lista = ["abacaxi", "uva", "manga", "banana", "melancia", "laranja", "goiaba"]
-palavra = "".join(sample(lista, 1))
+def limpa_tela():
+    if name == "nt":
+        _ = system("cls")
+    else:
+        _ = system("clear")
 
-def jogo_forca(palavra):
+def jogo_forca():
+    limpa_tela()
+
+    lista = ["abacaxi", "uva", "manga", "banana", "melancia", "laranja", "goiaba"]
+    palavra = "".join(sample(lista, 1))
     tentativas = len(palavra)
     saida = ['_'] * tentativas
+    letras_incorretas = []
     
     for i in range(tentativas):
         vez = input(f"Tentativa {i+1}: ").lower()
@@ -15,12 +24,13 @@ def jogo_forca(palavra):
             vez = input(f"Tentativa {i+1}: ").lower()
             
         if vez in palavra:
-            print(f"Letra certa\n")
+            print(f"Letra CERTA\n")
             for x in range(len(palavra)):
                 if palavra[x] == vez:
                     saida[x] = vez
         else:
-            print("Letra incorreta\n")
+            letras_incorretas.append(vez)
+            print(f"Letra INCORRETA\n{letras_incorretas}\n")
         
         print("".join(saida))
         
@@ -29,7 +39,7 @@ def jogo_forca(palavra):
             quit()
             
         print(f"\nChances restantes: {tentativas - (i+1)}\n")
-    
+
     print(f"Você perdeu D:, a palavra era {palavra}")   
-        
-jogo_forca(palavra)
+
+jogo_forca()
